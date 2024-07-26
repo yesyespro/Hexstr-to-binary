@@ -14,16 +14,26 @@
 typedef unsigned char byte;  
 
 
-bool install(const char * hexstr);
+bool install(const char * hexstr, const char * filename);
 byte convert_to_bin(char c);
 
 int main(int argc, char * argv[]){
 	/* hexadecimal em string */
-	const char * hexstr = "4f6cc3a1206573637265766f206573746120636172746120646520616d6f722070617261206f206d657520616d6f727a696e686f0a0a";
+	
+	char *hexstr;
+	char *filename;
+	if(argc < 3){
+		hexstr = "4f6cc3a1206573637265766f206573746120636172746120646520616d6f722070617261206f206d657520616d6f727a696e686f0a0a";
+		filename = "MeuAmor.txt";
+	}else{
+		filename = argv[1];
+		hexstr = argv[2];
+	}
+	
 	
 	/* chamado a função install() para fazer a conversão e baixar o arquivo */
 
-	bool sucesso = install(hexstr);
+	bool sucesso = install(hexstr, filename);
 	
 	/* verificando se o arquivo foi baixado corretamente */
 	if(sucesso){
@@ -34,12 +44,12 @@ int main(int argc, char * argv[]){
 }
 
 
-bool install(const char * hexstr){
+bool install(const char * hexstr, const char * filename){
 	int len = strlen(hexstr) / 2;  // Cada par de caracteres hexadecimais representa um byte
 	byte convert[len]; 
 
 	//criando um ponteiro para o arquivo
-	FILE *write = fopen("MeuAmor.txt", "wb");
+	FILE *write = fopen(filename, "wb");
 	
 	if(write == NULL){
 		err("Algo ocorreu error error: \"FileNotCreate\" \n");
