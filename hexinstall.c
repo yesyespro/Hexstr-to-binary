@@ -6,6 +6,8 @@
 /* Feito por yesyes */
 
 
+// Atualizado!
+
 /* Programa que vai converter hexstring em binario */
 
 /* informação que ninguem liga (quebrei a cabeça pra fazer esse programa tive que assistir um monte de video e tirando duvida com nosso velho amigo gpt) */ 
